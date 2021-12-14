@@ -22,11 +22,12 @@ const text = [
     'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
 ]
 
+// dichiarate le array
 
 let itemContent = document.getElementById("item-holder");
-itemContent = '';
+itemContent = '';                                        //creazione variabile per lavorare sulle immagini in colonna
 
-for(let i = 1; i < (items.length + 1); i++){
+for(let i = 1; i < (items.length + 1); i++){            //ciclo per inserimento delle immagini in colonna
     if(i == 1){
         itemContent += `
         <div class="sliderdimension" id="items${i}">
@@ -47,5 +48,39 @@ for(let i = 1; i < (items.length + 1); i++){
     }
 }
 
-const itemsContainer = document.querySelector('.items-container');
+const itemsContainer = document.querySelector('.items-container');  // stampo le immagini nella colonna
 itemsContainer.innerHTML = itemContent;
+
+
+
+
+
+// let arrayMain = [...items, ...title, ...text];
+// console.log(arrayMain)
+// let [cont1, cont2, cont3, cont4, cont5, cont6, cont7, cont8, cont9, cont10, cont11, cont12, cont13, cont14, cont15] = arrayMain;
+
+
+
+
+
+let contentMain = document.getElementById('main-item'); // creazione variabile per lavorare sulla immagine pricipale
+contentMain= '';
+
+for(let i= 0; i < (items.length); i++){                 // ciclo for per inserimenti delle immagini in stato hidden nel display principale
+    contentMain +=`
+    <div class="heightmain d-flex hidden" id="mainitem-${i}>
+        <img src="img/0${(i + 1)}.jpg" id="imgthumb" class="w-100 h-100 visual-item" alt="">
+        <div class="writing-container align-self-end m-5 text-end">
+            <h1 class="title" id="titlethumb">${title[i]}</h1>
+            <p class="description" id="pthumb">${text[i]}</p>
+        </div>
+    </div>`
+
+ }
+const itemContenuto = document.querySelector('.main-container')  // stampo su html le immagini principali in stato hidden
+itemContenuto.innerHTML = contentMain;
+console.log( contentMain)
+
+let k=1
+let itemActive = document.getElementById("mainitem-"+ k);           //cannot read propreties of null, ma in verità le immagini dovrebbero andare in classe ".active"
+itemActive.classList.add("active");

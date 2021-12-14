@@ -8,6 +8,17 @@ body{
 }
 .heightmain{
     height: 650px;
+    position: relative;
+    width: 100%;
+}
+.writing-container{
+    position: absolute;
+    ;
+    width: 90%;
+}
+.title,
+.description{
+    color: white;
 }
 .sliderdimension{
     position: relative;
@@ -51,8 +62,8 @@ body{
 }
 
 .active{
-    display: block;
+    display: block !important;
 }
 .hidden{
-    display: none;
+    display: none !important;
 }
