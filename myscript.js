@@ -82,14 +82,14 @@ itemContenuto.innerHTML = contentMain;
 console.log( contentMain);
 
 let k=1;
-let itemActive = document.getElementById("mainitem-"+ k);                           //cannot read propreties of null, ma in verità le immagini dovrebbero andare in classe ".active"
+let itemActive = document.getElementById("mainitem-"+ k); //cannot read propreties of null, ma in verità le immagini dovrebbero andare in classe ".active"
 itemActive.classList.add("active");
 
 
 const prev = document.querySelector('.up');
-const next = document.querySelector('.down');
+const next = document.querySelector('.down'); //dichiarate variabili per poter interaggire con le frecce
 
-prev.addEventListener('click', function(){
+prev.addEventListener('click', function(){     //funzione per attivare sul click l'evento di cambiare immagine verso quella precedente
     if(k != 1){
         k--;
         itemActive.classList.remove('active');
@@ -97,16 +97,22 @@ prev.addEventListener('click', function(){
         itemActive.classList.add('active');
     }
     else{
-        k === 5;
+        k = 5;
         itemActive.classList.remove('active');
         itemActive = document.getElementById('mainitem-'+k);
         itemActive.classList.add('active');
     }
 })
 
-next.addEventListener('click', function(){
+next.addEventListener('click', function(){     //funzione per attivare sul click l'evento di cambiare immagine verso quella successivo
     if(k != 5){
         k++;
+        itemActive.classList.remove('active');
+        itemActive = document.getElementById('mainitem-'+k);
+        itemActive.classList.add('active');
+    }
+    else{
+        k = 1;
         itemActive.classList.remove('active');
         itemActive = document.getElementById('mainitem-'+k);
         itemActive.classList.add('active');
