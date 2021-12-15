@@ -68,7 +68,7 @@ contentMain= '';
 
 for(let i= 0; i < (items.length); i++){                 // ciclo for per inserimenti delle immagini in stato hidden nel display principale
     contentMain +=`
-    <div class="heightmain d-flex hidden" id="mainitem-${i}>
+    <div class="heightmain d-flex hidden" id="mainitem-${i + 1}">
         <img src="img/0${(i + 1)}.jpg" id="imgthumb" class="w-100 h-100 visual-item" alt="">
         <div class="writing-container align-self-end m-5 text-end">
             <h1 class="title" id="titlethumb">${title[i]}</h1>
@@ -79,8 +79,37 @@ for(let i= 0; i < (items.length); i++){                 // ciclo for per inserim
  }
 const itemContenuto = document.querySelector('.main-container')  // stampo su html le immagini principali in stato hidden
 itemContenuto.innerHTML = contentMain;
-console.log( contentMain)
+console.log( contentMain);
 
-let k=1
-let itemActive = document.getElementById("mainitem-"+ k);           //cannot read propreties of null, ma in verità le immagini dovrebbero andare in classe ".active"
+let k=1;
+let itemActive = document.getElementById("mainitem-"+ k);                           //cannot read propreties of null, ma in verità le immagini dovrebbero andare in classe ".active"
 itemActive.classList.add("active");
+
+
+const prev = document.querySelector('.up');
+const next = document.querySelector('.down');
+
+prev.addEventListener('click', function(){
+    if(k != 1){
+        k--;
+        itemActive.classList.remove('active');
+        itemActive = document.getElementById('mainitem-'+k);
+        itemActive.classList.add('active');
+    }
+    else{
+        k === 5;
+        itemActive.classList.remove('active');
+        itemActive = document.getElementById('mainitem-'+k);
+        itemActive.classList.add('active');
+    }
+})
+
+next.addEventListener('click', function(){
+    if(k != 5){
+        k++;
+        itemActive.classList.remove('active');
+        itemActive = document.getElementById('mainitem-'+k);
+        itemActive.classList.add('active');
+    }
+    
+})
